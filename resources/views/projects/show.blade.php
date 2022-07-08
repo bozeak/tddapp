@@ -5,7 +5,7 @@
         <div class="flex justify-between w-full items-end">
             <p class="text-gray font-normal">
                 <a href="/projects">My projects</a> / {{ $project->title }}</p>
-            <a href="/projects/create" class="button">New project</a>
+            <a href="{{ $project->path() . '/edit' }}" class="button">Edit project</a>
         </div>
     </header>
 

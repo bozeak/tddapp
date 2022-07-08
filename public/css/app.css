@@ -600,14 +600,26 @@ video {
 .-ml-5 {
   margin-left: -1.25rem;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 .mb-8 {
   margin-bottom: 2rem;
 }
 .mb-4 {
   margin-bottom: 1rem;
+}
+.block {
+  display: block;
 }
 .flex {
   display: flex;
@@ -642,12 +654,6 @@ video {
 .w-full {
   width: 100%;
 }
-.w-3\/4 {
-  width: 75%;
-}
-.w-1\/4 {
-  width: 25%;
-}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -672,6 +678,12 @@ video {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.rounded {
+  border-radius: 0.25rem;
+}
+.border {
+  border-width: 1px;
+}
 .border-t {
   border-top-width: 1px;
 }
@@ -681,6 +693,10 @@ video {
 .border-blue-light {
   --tw-border-opacity: 1;
   border-color: rgb(138 226 254 / var(--tw-border-opacity));
+}
+.border-grey-light {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 246 249 / var(--tw-border-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -696,8 +712,8 @@ video {
 .p-0 {
   padding: 0px;
 }
-.p-5 {
-  padding: 1.25rem;
+.p-2 {
+  padding: 0.5rem;
 }
 .py-4 {
   padding-top: 1rem;
@@ -718,11 +734,11 @@ video {
 .pt-8 {
   padding-top: 2rem;
 }
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
 .pl-4 {
   padding-left: 1rem;
+}
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 .text-center {
   text-align: center;
@@ -742,9 +758,13 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 .font-semibold {
   font-weight: 600;
@@ -757,6 +777,10 @@ video {
 }
 .text-gray {
   color: rgba(0, 0, 0, 0.4);
+}
+.text-red {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -872,12 +896,31 @@ video {
   .md\:border-l {
     border-left-width: 1px;
   }
+
+  .md\:py-12 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .md\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
 }
 
 @media (min-width: 1024px) {
 
+  .lg\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .lg\:flex {
     display: flex;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:w-1\/3 {

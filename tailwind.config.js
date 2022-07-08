@@ -18,7 +18,8 @@ module.exports = {
             'gray': 'rgba(0, 0, 0, 0.4)',
             'gray-light': '#d3dce6',
             white: '#ffffff',
-            'grey-light': '#F5F6F9'
+            'grey-light': '#F5F6F9',
+            'red': 'red'
         },
         shadow: {
             default: '0 0 5px 0 rgba(0, 0, 0, 0.08)'
