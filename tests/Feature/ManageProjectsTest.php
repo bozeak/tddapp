@@ -58,10 +58,11 @@ class ManageProjectsTest extends TestCase
      */
     public function a_user_can_update_a_project()
     {
+        $this->withoutExceptionHandling();
         $project = ProjectFactory::create();
 
         $this->actingAs($project->owner)
-            ->patch($project->path(), $attributes = ['title' => 'Changed', 'description' => 'Lorem ip[sum.' ,'notes' => 'Changed'])
+            ->patch($project->path(), $attributes = ['title' => 'Changed', 'description' => 'Lorem ipsum.' ,'notes' => 'Changed'])
             ->assertRedirect($project->path());
 
         $this->get($project->path() . '/edit')->assertOk();
