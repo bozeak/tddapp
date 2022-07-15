@@ -23,8 +23,10 @@
                                 @csrf
 
                                 <div class="flex">
-                                    <input name="body" type="text" value="{{ $task->body }}" class="w-full {{ $task->completed ? 'text-gray' : '' }}">
-                                    <input type="checkbox" name="completed" onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}/>
+                                    <input name="body" type="text" value="{{ $task->body }}"
+                                           class="w-full {{ $task->completed ? 'text-gray' : '' }}">
+                                    <input type="checkbox" name="completed"
+                                           onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}/>
                                 </div>
                             </form>
                         </div>
@@ -64,6 +66,7 @@
             </div>
             <div class="lg:w-1/4 px-3">
                 @include('projects.card')
+                @include('projects.activity.card')
             </div>
         </div>
     </main>

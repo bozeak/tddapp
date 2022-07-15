@@ -52,7 +52,7 @@ class Project extends Model
      */
     public function activity(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Activity::class);
+        return $this->hasMany(Activity::class)->latest();
     }
 
 
