@@ -9,29 +9,48 @@ class Project extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array
+     */
     protected $guarded = [];
 
-    public function path()
+    /**
+     * @return string
+     */
+    public function path(): string
     {
         return "/projects/{$this->id}";
     }
 
-    public function owner()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function owner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function tasks()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Task::class);
     }
 
+    /**
+     * @param $body
+     * @return Model
+     */
     public function addTask($body)
     {
         return $this->tasks()->create(compact('body'));
     }
 
-    public function activity()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function activity(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Activity::class);
     }
@@ -40,15 +59,12 @@ class Project extends Model
     /**
      * Records the activity.
      *
-     * @param string $type
+     * @param string $description
      *
      * @return void
      */
-    public function recordActivity(string $type)
+    public function recordActivity(string $description)
     {
-        Activity::create([
-            'project_id' => $this->id,
-            'description' => $type,
-        ]);
+        $this->activity()->create(compact('description'));
     }
 }

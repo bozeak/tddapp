@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ProjectTasksController extends Controller
 {
+    /**
+     * @param Project $project
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function store(Project $project)
     {
         $this->authorize('update', $project);
@@ -19,17 +24,21 @@ class ProjectTasksController extends Controller
         return redirect($project->path());
     }
 
+    /**
+     * @param Project $project
+     * @param Task $task
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update(Project $project, Task $task)
     {
         $this->authorize('update', $task->project);
 
-        request()->validate(['body' => 'required']);
+        $task->update(request()->validate(['body' => 'required']));
 
-        $task->update(['body' => request('body')]);
+        $method = request('completed') ? 'complete' : 'incomplete';
 
-        if (request()->has('completed')) {
-            $task->complete();
-        }
+        $task->$method();
 
         return redirect($project->path());
     }
