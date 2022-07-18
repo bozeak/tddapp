@@ -81,8 +81,8 @@ class Project extends Model
     {
         if ($description === 'updated') {
             return [
-                'before' => Arr::except(array_diff($this->old, $this->getAttributes()), ['created_at', 'updated_at']),
-                'after' => Arr::except($this->getChanges(), ['created_at', 'updated_at']),
+                'before' => Arr::except(array_diff($this->old, $this->getAttributes()), ['updated_at']),
+                'after' => Arr::except($this->getChanges(), ['updated_at']),
             ];
         }
     }
