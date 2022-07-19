@@ -56,6 +56,16 @@ class ManageProjectsTest extends TestCase
     /**
      * @test
      */
+    function a_user_can_see_all_projects_they_have_been_invited_to_on_their_dashboard()
+    {
+        $project = tap(ProjectFactory::create())->invite($this->signIn());
+
+        $this->get('/projects')->assertSee($project->title);
+    }
+
+    /**
+     * @test
+     */
     public function unauthorized_users_cannot_delete_a_project()
     {
         $project = ProjectFactory::create();
@@ -71,16 +81,16 @@ class ManageProjectsTest extends TestCase
     /**
      * @test
      */
-     public function a_user_can_delete_a_project()
-     {
-         $project = ProjectFactory::create();
+    public function a_user_can_delete_a_project()
+    {
+        $project = ProjectFactory::create();
 
-         $this->actingAs($project->owner)
-             ->delete($project->path())
-             ->assertRedirect('/projects');
+        $this->actingAs($project->owner)
+            ->delete($project->path())
+            ->assertRedirect('/projects');
 
-          $this->assertDatabaseMissing('projects', $project->only('id'));
-     }
+        $this->assertDatabaseMissing('projects', $project->only('id'));
+    }
 
     /**
      * @test
@@ -91,7 +101,7 @@ class ManageProjectsTest extends TestCase
         $project = ProjectFactory::create();
 
         $this->actingAs($project->owner)
-            ->patch($project->path(), $attributes = ['title' => 'Changed', 'description' => 'Lorem ipsum.' ,'notes' => 'Changed'])
+            ->patch($project->path(), $attributes = ['title' => 'Changed', 'description' => 'Lorem ipsum.', 'notes' => 'Changed'])
             ->assertRedirect($project->path());
 
         $this->get($project->path() . '/edit')->assertOk();
