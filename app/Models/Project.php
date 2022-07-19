@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
+use App\RecordsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Arr;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
     use HasFactory;
+    use RecordsActivity;
 
     /**
      * @var array
      */
     protected $guarded = [];
-
-    public $old = [];
 
     /**
      * @return string
@@ -34,9 +34,9 @@ class Project extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
     }
@@ -51,39 +51,10 @@ class Project extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
-    public function activity(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function activity(): HasMany
     {
         return $this->hasMany(Activity::class)->latest();
-    }
-
-
-    /**
-     * Records the activity.
-     *
-     * @param string $description
-     *
-     * @return void
-     */
-    public function recordActivity(string $description)
-    {
-        $this->activity()->create([
-            'description' => $description,
-            'changes' => $this->activityChanges($description),
-        ]);
-    }
-
-    /**
-     * @return array|null
-     */
-    protected function activityChanges($description)
-    {
-        if ($description === 'updated') {
-            return [
-                'before' => Arr::except(array_diff($this->old, $this->getAttributes()), ['updated_at']),
-                'after' => Arr::except($this->getChanges(), ['updated_at']),
-            ];
-        }
     }
 }
