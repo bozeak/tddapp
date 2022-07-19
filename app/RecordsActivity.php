@@ -90,6 +90,6 @@ trait RecordsActivity
         if (isset(static::$recordableEvents)) {
             return static::$recordableEvents;
         }
-        return ['created', 'updated', 'deleted'];
+        return ['created', 'updated'];
     }
 }
