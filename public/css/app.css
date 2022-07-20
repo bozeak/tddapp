@@ -666,8 +666,14 @@ video {
 .max-w-6xl {
   max-width: 72rem;
 }
+.flex-1 {
+  flex: 1 1 0%;
+}
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.flex-col {
+  flex-direction: column;
 }
 .items-end {
   align-items: flex-end;
@@ -709,6 +715,9 @@ video {
 .border-grey-light {
   --tw-border-opacity: 1;
   border-color: rgb(245 246 249 / var(--tw-border-opacity));
+}
+.border-gray {
+  border-color: rgba(0, 0, 0, 0.4);
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -957,5 +966,10 @@ video {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
