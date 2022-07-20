@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="theme-dark bg-page">
+<body class="theme-light bg-page">
     <div id="app">
         <nav class="bg-header">
             <div class="container mx-auto">
@@ -64,9 +64,20 @@
                                 @endif
                             @else
                                 <li class="nav-item dropdown flex items-center">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        <img class="rounded-full w-8 mr-4" src="{{ gravatarUrl(Auth::user()->email) }}" alt="{{ Auth::user()->name }}">
+                                    <theme-switcher></theme-switcher>
+{{--                                    <div class="flex items-center mr-8">--}}
+{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
+{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
+{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
+{{--                                    </div>--}}
+                                    <a
+                                        class="flex items-center text text-sm"
+                                        href="#" role="button"
+                                        data-bs-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false" v-pre
+                                    >
+                                        <img class="rounded-full w-8 mr-3" src="{{ gravatarUrl(Auth::user()->email) }}" alt="{{ Auth::user()->name }}">
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
