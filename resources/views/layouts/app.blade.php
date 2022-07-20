@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="theme-light bg-page">
+<body class="theme-dark bg-page">
     <div id="app">
         <nav class="bg-header">
             <div class="container mx-auto">
@@ -63,10 +63,10 @@
                                     </li>
                                 @endif
                             @else
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown flex items-center">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
+                                        <img class="rounded-full w-8 mr-4" src="{{ gravatarUrl(Auth::user()->email) }}" alt="{{ Auth::user()->name }}">
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

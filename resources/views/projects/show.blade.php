@@ -35,7 +35,7 @@
 
                                 <div class="flex">
                                     <input name="body" type="text" value="{{ $task->body }}"
-                                           class="w-full bg-card text {{ $task->completed ? 'text' : '' }}">
+                                           class="w-full bg-card text {{ $task->completed ? 'text line-through' : '' }}">
                                     <input type="checkbox" name="completed"
                                            onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}/>
                                 </div>
