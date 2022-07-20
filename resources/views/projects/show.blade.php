@@ -3,7 +3,7 @@
 @section('content')
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between w-full items-end">
-            <p class="text-gray font-normal">
+            <p class="text font-normal">
                 <a href="/projects">My projects</a> / {{ $project->title }}</p>
 
             <div class="flex items-center">
@@ -24,7 +24,7 @@
         <div class="lg:flex -mx-3">
             <div class="lg:w-3/4 px-3 mb-6">
                 <div class="mb-8">
-                    <h2 class="text-gray font-normal text-lg mb-3">Tasks</h2>
+                    <h2 class="text font-normal text-lg mb-3">Tasks</h2>
 
                     {{-- tasks --}}
                     @foreach($project->tasks as $task)
@@ -35,7 +35,7 @@
 
                                 <div class="flex">
                                     <input name="body" type="text" value="{{ $task->body }}"
-                                           class="w-full {{ $task->completed ? 'text-gray' : '' }}">
+                                           class="w-full bg-card text {{ $task->completed ? 'text' : '' }}">
                                     <input type="checkbox" name="completed"
                                            onchange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}/>
                                 </div>
@@ -46,12 +46,12 @@
                     <div class="card mb-3">
                         <form action="{{ $project->path() . '/tasks'}}" method="post">
                             @csrf
-                            <input name="body" type="text" class="w-full" placeholder="Add a new task...">
+                            <input name="body" type="text" class="w-full bg-card text" placeholder="Add a new task...">
                         </form>
                     </div>
                 </div>
                 <div>
-                    <h2 class="text-gray font-normal text-lg mb-3">General Notes</h2>
+                    <h2 class="text font-normal text-lg mb-3">General Notes</h2>
 
                     <form action="{{ $project->path() }}" method="post">
                         @csrf
