@@ -65,32 +65,23 @@
                             @else
                                 <li class="nav-item dropdown flex items-center">
                                     <theme-switcher></theme-switcher>
-{{--                                    <div class="flex items-center mr-8">--}}
-{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
-{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
-{{--                                        <button class="rounded-full w-4 h-4 bg-default border border-accent mr-2"></button>--}}
-{{--                                    </div>--}}
-                                    <a
-                                        class="flex items-center text text-sm"
-                                        href="#" role="button"
-                                        data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false" v-pre
-                                    >
-                                        <img class="rounded-full w-8 mr-3" src="{{ gravatarUrl(Auth::user()->email) }}" alt="{{ Auth::user()->name }}">
-                                    </a>
 
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
+                                    <dropdown align="right" width="200px">
+                                        <template v-slot:trigger>
+                                            <button
+                                                class="flex items-center text text-sm"
+                                            >
+                                                <img class="rounded-full w-8 mr-3" src="{{ gravatarUrl(Auth::user()->email) }}" alt="{{ Auth::user()->name }}">
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                {{ Auth::user()->name }}
+                                            </button>
+                                        </template>
+
+                                        <form id="logout-form" action="/logout" method="POST">
                                             @csrf
+                                            <button type="submit" class="dropdown-menu-link w-full text-left">Logout</button>
                                         </form>
-                                    </div>
+                                    </dropdown>
                                 </li>
                             @endguest
                         </ul>
