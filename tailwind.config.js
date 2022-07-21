@@ -41,7 +41,8 @@ module.exports = {
             'grey-light': '#F5F6F9',
             'red': 'red',
             'accent': colors.accent,
-            'accent-light': colors.accentLight
+            'accent-light': colors.accentLight,
+            error: colors.error,
         },
         shadow: {
             default: '0 0 5px 0 rgba(0, 0, 0, 0.08)',
