@@ -59,14 +59,6 @@ class Project extends Model
         return $this->tasks()->createMany($tasks);
     }
 
-    /**
-     * @return HasMany
-     */
-    public function activity(): HasMany
-    {
-        return $this->hasMany(Activity::class)->latest();
-    }
-
     public function invite(User $user)
     {
         return $this->members()->attach($user);

@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Activity;
+use App\Models\Project;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Arr;
 
@@ -28,7 +29,7 @@ trait RecordsActivity
 
             if ($event === 'updated') {
                 static::updating(function ($model) {
-                    $model->oldAttributes = $model->getOriginal();
+                    $model->oldAttributes = $model->getRawOriginal();
                 });
             }
         }
@@ -73,19 +74,22 @@ trait RecordsActivity
         }
     }
 
-
     /**
-     * @return MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany|MorphMany
      */
-    public function activity(): MorphMany
+    public function activity()
     {
+        if (get_class($this) === Project::class) {
+            return $this->hasMany(Activity::class)->latest();
+        }
+
         return $this->morphMany(Activity::class, 'subject')->latest();
     }
 
     /**
      * @return string[]
      */
-    public static function recordableEvents(): array
+    protected static function recordableEvents(): array
     {
         if (isset(static::$recordableEvents)) {
             return static::$recordableEvents;
