@@ -1,7 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require('tailwindcss/colors')
+// const colors = require('tailwindcss/colors')
+
+let colors = {
+    default: 'var(--text-default-color)',
+    accent: 'var(--text-accent-color)',
+    'accent-light': 'var(--text-accent-light-color)',
+    muted: 'var(--text-muted-color)',
+    'muted-light': 'var(--text-muted-light-color)',
+    'error': 'var(--text-error-color)'
+};
 
 module.exports = {
+    colors: colors,
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -9,14 +19,14 @@ module.exports = {
     ],
     theme: {
         colors: {
-            transparent: 'transparent',
-            current: 'currentColor',
-            black: colors.black,
-            white: colors.white,
-            gray: colors.gray,
-            emerald: colors.emerald,
-            indigo: colors.indigo,
-            yellow: colors.yellow,
+            // transparent: 'transparent',
+            // current: 'currentColor',
+            // black: colors.black,
+            white: '#fff',
+            // gray: colors.gray,
+            // emerald: colors.emerald,
+            // indigo: colors.indigo,
+            // yellow: colors.yellow,
             'blue': '#47cdff',
             'blue-light': '#8ae2fe',
             // 'purple': '#7e5bef',
@@ -29,7 +39,9 @@ module.exports = {
             'gray-light': '#d3dce6',
             // white: '#ffffff',
             'grey-light': '#F5F6F9',
-            'red': 'red'
+            'red': 'red',
+            'accent': colors.accent,
+            'accent-light': colors.accentLight
         },
         shadow: {
             default: '0 0 5px 0 rgba(0, 0, 0, 0.08)',

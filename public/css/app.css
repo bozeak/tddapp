@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -621,6 +621,12 @@ video {
 .mb-2 {
   margin-bottom: 0.5rem;
 }
+.mb-16 {
+  margin-bottom: 4rem;
+}
+.mr-4 {
+  margin-right: 1rem;
+}
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -635,6 +641,9 @@ video {
 }
 .flex {
   display: flex;
+}
+.inline-flex {
+  display: inline-flex;
 }
 .grid {
   display: grid;
@@ -693,6 +702,9 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-end {
+  justify-content: flex-end;
+}
 .justify-center {
   justify-content: center;
 }
@@ -720,6 +732,9 @@ video {
 .border-l-4 {
   border-left-width: 4px;
 }
+.border-accent {
+  border-color: var(--text-accent-color);
+}
 .border-grey-light {
   --tw-border-opacity: 1;
   border-color: rgb(245 246 249 / var(--tw-border-opacity));
@@ -735,9 +750,6 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-transparent {
-  background-color: transparent;
-}
 .bg-page {
   background-color: var(--page-background-color);
 }
@@ -747,9 +759,6 @@ video {
 .bg-card {
   background-color: var(--card-background-color);
 }
-.fill-current {
-  fill: currentColor;
-}
 .p-6 {
   padding: 1.5rem;
 }
@@ -758,6 +767,9 @@ video {
 }
 .p-0 {
   padding: 0px;
+}
+.p-10 {
+  padding: 2.5rem;
 }
 .py-4 {
   padding-top: 1rem;
@@ -774,6 +786,10 @@ video {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -888,7 +904,19 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
+  color: white;
+}
+.button.is-outlined {
+  border-width: 1px;
+  border-color: var(--text-accent-color);
+  background-color: var(--card-background-color);
+  color: var(--text-accent-color);
+}
+.theme-light .button {
   box-shadow: 0 2px 7px 0 #b0eaff;
+}
+.theme-dark .button {
+  box-shadow: 0 2px 7px 0 #00658b;
 }
 
 .card {

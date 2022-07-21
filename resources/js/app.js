@@ -1,4 +1,4 @@
-// require('./bootstrap');
+require('./bootstrap');
 //
 // window.Vue = require('vue');
 //
@@ -8,11 +8,19 @@
 //     el: '#app'
 // });
 
+import Vue from 'vue';
+import VModal from 'vue-js-modal'
+
+Vue.use(VModal)
+
 // import Vue from 'vue';
-import {createApp} from 'vue';
 
-const app = createApp({});
+// const app = createApp({});
 
-app.component('theme-switcher', require('./components/ThemeSwitcher.vue').default)
+Vue.component('theme-switcher', require('./components/ThemeSwitcher.vue').default)
 
-app.mount('#app');
+// app.mount('#app');
+
+new Vue({
+    el: '#app'
+});
