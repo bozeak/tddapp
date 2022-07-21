@@ -51,6 +51,15 @@ class Project extends Model
     }
 
     /**
+     * @param array $tasks
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function addTasks($tasks)
+    {
+        return $this->tasks()->createMany($tasks);
+    }
+
+    /**
      * @return HasMany
      */
     public function activity(): HasMany
