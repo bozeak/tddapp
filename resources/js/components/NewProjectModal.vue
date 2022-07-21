@@ -10,9 +10,10 @@
                         <input type="text"
                                id="title"
                                class="border p-2 px-2 text-xs block w-full rounded"
-                               :class="errors.title ? 'border-error' : 'border-muted-light'"
+                               :class="form.errors.title ? 'border-error' : 'border-muted-light'"
                                v-model="form.title">
-                        <span class="text-xs text-error italic" v-if="errors.title" v-text="errors.title[0]"></span>
+                        <span class="text-xs text-error italic" v-if="form.errors.title"
+                              v-text="form.errors.title[0]"></span>
                     </div>
 
                     <div class="mb-4">
@@ -21,10 +22,11 @@
                             id="description"
                             class="border border-muted-light p-2 px-2 text-xs block w-full rounded"
                             rows="7"
-                            :class="errors.description ? 'border-error' : 'border-muted-light'"
+                            :class="form.errors.description ? 'border-error' : 'border-muted-light'"
                             v-model="form.description"></textarea>
 
-                        <span class="text-xs text-error italic" v-if="errors.description" v-text="errors.description[0]"></span>
+                        <span class="text-xs text-error italic" v-if="form.errors.description"
+                              v-text="form.errors.description[0]"></span>
                     </div>
                 </div>
                 <div class="flex-1 ml-4">
@@ -55,7 +57,8 @@
             </div>
 
             <footer class="flex justify-end">
-                <button type="button" class="button is-outlined mr-4" @click="$modal.hide('new-project')">Cancel</button>
+                <button type="button" class="button is-outlined mr-4" @click="$modal.hide('new-project')">Cancel
+                </button>
                 <button type="submit" class="button">Create Project</button>
             </footer>
         </form>
@@ -63,31 +66,34 @@
 </template>
 
 <script>
+
+import BirdboardForm from './BirdboardForm';
+
 export default {
     data() {
         return {
-            form: {
+            form: new BirdboardForm({
                 title: '',
                 description: '',
                 tasks: [
                     {body: ''},
                 ]
-            },
-            errors: {}
+            }),
         }
     },
     methods: {
         addTask() {
-            this.form.tasks.push({value: ""});
+            this.form.tasks.push({body: ""});
         },
 
         async submit() {
-            try {
-                location = (await axios.post('/projects', this.form)).data.message;
+            if (!this.form.tasks[0].body) {
+                delete this.form.originalData.tasks;
             }
-            catch (error) {
-                this.errors = error.response.data.errors;
-            }
+
+            this.form.submit('/projects')
+                .then(response => location = response.data.message)
+                .catch(error => console.log(error));
         }
     }
 }
